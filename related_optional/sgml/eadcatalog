@@ -1,0 +1,52 @@
+OVERRIDE YES  
+
+-- Encoded Archival Description (EAD) Version 2002 Catalog --
+
+-- SGML declaration eadsgml.dcl  --
+
+SGMLDECL 'eadsgml.dcl' 
+
+-- ead.dtd --
+
+PUBLIC '+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN' 
+'ead.dtd'
+
+-- SGML ISO SDATA character entity files. 
+   Note: These are commonly distributed with SGML compliant software
+--
+PUBLIC 'ISO 8879:1986//ENTITIES Added Latin 1//EN' 
+'isolat1.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Added Latin 2//EN' 
+'isolat2.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Greek Symbols//EN' 
+'isogrk3.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN' 
+'isogrk4.gml'
+
+PUBLIC 'ISO 8879:1986//ENTITIES Greek Letters//EN' 
+'isogrk1.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Monotoniko Greek//EN' 
+'isogrk2.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Diacritical Marks//EN' 
+'isodia.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN'
+'isonum.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES Publishing//EN' 
+'isopub.gml' 
+
+PUBLIC 'ISO 8879:1986//ENTITIES General Technical//EN' 
+'isotech.gml'
+
+PUBLIC 'ISO 8879:1986//ENTITIES Russian Cyrillic//EN' 
+'isocyr1.gml'
+
+PUBLIC 'ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN' 
+'isocyr2.gml'
+

@@ -1,0 +1,1071 @@
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                                                                       -->
+<!--                              EADLOCAL                                 -->
+<!--                                2002                                   -->
+<!--                                                                       -->
+<!--                                                                       -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                                                                       -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                                                                       -->
+<!--       Name:    Encoded Archival Description Document Type Definition  -->
+<!--                  File name: eadlocal.ent                              -->
+<!--                  Version: 2002                                        -->
+<!--                  Version date: 20021204                               -->
+<!--                                                                       -->
+<!--       Editor:  Daniel V. Pitti                                        -->
+<!--                Institute for Advanced Technology in the Humanities    -->
+<!--                University of Virginia                                 -->
+<!--                                                                       -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                                                                       -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                            INTRODUCTION                               -->
+<!--
+     EADLOCAL is provided as an optional convenience for repositories and
+     national and regional consortia to constrain or limit the values that
+     may be used in selected attributes on selected elements. All EAD
+     instances created using EADLOCAL to constrain attribute values should
+     be valid when parsed or validated against the EAD 2002 DTD without
+     referencing eadlocal.ent and when using a conforming SGML or XML 
+     parser.
+
+     Repositories or consortia may find eadlocal.ent useful in ensuring the
+     consistent use of specific attributes and attribute values mandated by
+     local or consortial policy when these same attributes or specific values
+     are not required by the EAD DTD. For example, the @type on <container>
+     may be used to specify the type of container to which the designation
+     applies. The EAD DTD does not require use of this attribute, nor does
+     it specify a set of values for it when it is used. A repository or
+     consortium may require use of the attribute, with values chosen from a
+     closed list of values. Careful modification of the declaration of @type
+     on <container> will enable the repository or consortium to use
+     validation and authoring tools to enforce use of @type on <container>, 
+     or limit the available @type values.
+
+     NOTE: Before employing eadlocal.ent, please read the following
+     instructions for appropriate and conforming use. Changes other
+     than those described below in the instructions may result in instances
+     that do not conform to the EAD 2002 DTD. 
+
+     The methods used to provide alternative, constraining values for
+     selected attributes employ XML parameter entities and conditional
+     sections. The following instructions provide specific instructions for
+     using eadlocal.ent, but do not explain the XML methods. For an
+     explanation of parameter entities and conditional sections, see
+     http://www.tei-c.org/P4X/SG.html. In particular, see 2.7.5 Parameter
+     entities and 2.8.2 Conditional marked section.
+                                                                           -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                                                                       -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                            INSTRUCTIONS                               -->
+<!--
+
+       1. In the ead.dtd file, Part 1, H. Local Attribute Modification,
+          change the key word "IGNORE" to "INCLUDE" in the parameter entity.
+
+          <!ENTITY % eadlocal
+           'IGNORE'
+                                                                             >
+
+          becomes:
+
+          <!ENTITY % eadlocal
+           'INCLUDE'
+                                                                             >
+
+          This change will result in the parser or validator reading or
+          including the following conditional section and the contained
+          entity declaration and reference:
+
+          <![%eadlocal;[
+            <!ENTITY % attrsmod
+              SYSTEM 'eadlocal.ent'
+                                                                             >
+          %attrsmod;
+                                                                           ]]>
+
+          The result is that the parameter entity declarations in
+          eadlocal.ent will be read before the declarations for the same
+          entities in ead.dtd, and will thereby override them.
+
+       2. In eadlocal.ent, carefully edit the literal entity values of the
+          parameter entities that provide the attribute declarations for
+          the attributes you want to modify.
+
+          You can identify attributes and the elements on which they appear
+          based on the parameter entity name. Each has three components,
+          separated by periods:
+
+            prefix am (attribute-modifiable)
+
+            element name or class of element names
+
+            attribute name
+
+          The second component is most often an element name, though the
+          following element classes are used:
+
+            access: <corpname>, <famname>, <function>, <genreform>,
+             <geogname>, <name>, <occupation>, <persname>, and <subject>
+
+            dates: <date> and <unitdate> (Note: the name "date" in the
+             singular is an element name)
+
+            dsctab: <dsc>, <c>, and <c01>-<c12>.
+
+          The attribute declaration for a class applies to all elements in
+          the class.
+
+          Attribute declarations (as literal entity values in the following
+          parameter entities) have three components: name, type, and default.
+          In the following example, "rules" is the name of the attribute,
+          "NMTOKEN" is the attribute type, and "#IMPLIED" is the attribute
+          default.
+
+            'rules
+              NMTOKEN
+              #IMPLIED'
+
+          The following two attribute types are used:
+
+            NMTOKEN: an XML key word meaning that the value of the attribute
+              must be a NAME TOKEN.
+
+            CDATA: an XML key word meaning that value of the attribute may
+              be virtually any Unicode character, including a whitespace.
+
+          Both NMTOKEN and CDATA may be replaced by one or more values (an
+          enumerated list) that conform to the XML rules specifying the
+          composition of a NMTOKEN. A NMTOKEN may include any combination of
+          the following: Letter, digit, '.', '-', '_', or ':'.
+
+          NOTE: A NMTOKEN MAY NOT contain a space. Thus while CDATA allows
+          virtually any combination of characters (including whitespaces),
+          constraining the values in the DTD will necessarily requiring
+          conforming to the XML rules for NMTOKEN.
+
+          NOTE: The replacement value or values must be enclosed in
+          parentheses.
+
+          For example, NMTOKEN and CDATA may be replaced by
+
+            (a) 
+
+          or 
+
+            (a | b | c)
+
+          but not
+
+            (a | b c | d)
+
+          because the "b c" value contains a whitespace.
+
+          The third component of the attribute declaration is the attribute
+          default. In most cases, the value will be #IMPLIED. #IMPLIED is an
+          XML key word indicating that the attribute is optional. This value
+          may be changed to #REQUIRED, indicating that the attribute must be
+          supplied in the document instance.
+
+          In order to conform to the EAD 2002 DTD, no other changes to
+          #IMPLIED permitted by XML are allowed.
+
+          Some attribute declarations provide a default value. For example,
+          the parameter entity for the calendar attribute used on <date> and
+          <unitdate>:
+
+            <!ENTITY % am.dates.calendar
+              'calendar
+                NMTOKEN
+                "gregorian"'
+                                                                             >
+
+          The attribute default is "gregorian". For these declarations, both
+          the type and default should be changed. The default should be changed
+          to #REQUIRED. The NMTOKEN can then be replaced by a single NMTOKEN
+          conforming value, or an enumerated list. For example:
+
+            <!ENTITY % am.dates.calendar
+              'calendar
+                (gregorian | hebrew | islamic)
+                #REQUIRED'
+                                                                             >
+
+          Under no circumstances should the default value be changed to
+          #IMPLIED, or changed to another NMTOKEN value, such as "islamic".
+          If the default value is changed to #IMPLIED and the attribute is not
+          explicitly supplied in the instance, then the default value will 
+          revert to the value in the ead.dtd. If the default value is changed 
+          to a NMTOKEN value, this value, depending on the software being 
+          used, may not be supplied in the EAD instance, again resulting in 
+          the default value reverting to the value in the ead.dtd.
+
+       3. All modifications should be carefully tested to ensure that EAD
+          instances are valid against both the declarations in the EAD 2002 
+          DTD (Part II B. Parameter Entities for Modifiable Attributes), and 
+          the declarations in eadlocal.ent.
+
+       4. All modifications should be carefully documented, indicating the
+          specific changes made to the declarations.
+
+                                                                           -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                      EADLOCAL CHANGE HISTORY                          -->
+<!--                                                                       -->
+<!--  NUM  YYYYMMDD     DESCRIPTION OF CHANGE
+                                                                           -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--                                                                       -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!ENTITY % am.access.rules
+  'rules
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.access.source
+  'source
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dates.calendar
+  'calendar
+    NMTOKEN
+    "gregorian"'
+                                                                             >
+<!ENTITY % am.dates.era
+  'era
+    NMTOKEN
+    "ce"'
+                                                                             >
+<!ENTITY % am.dsctab.tpattern
+  'tpattern
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.abstract.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.abstract.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.abstract.langcode
+  'langcode
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.abstract.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.accessrestrict.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.accessrestrict.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.accruals.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.acqinfo.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.altformavail.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.altformavail.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.appraisal.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.archdesc.relatedencoding
+  'relatedencoding
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.archdesc.type
+  'type
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<![%eadgrp;[
+<!ENTITY % am.archdescgrp.relatedencoding
+  'relatedencoding
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.archdescgrp.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+                                                                           ]]>
+<!ENTITY % am.arrangement.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.author.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.bibliography.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.bibref.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.bibseries.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.bioghist.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.change.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.chronlist.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.container.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.container.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.container.type
+  'type
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.controlaccess.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.corpname.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.corpname.role
+  'role
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.creation.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.custodhist.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.date.certainty
+  'certainty
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.date.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.date.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.desc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.desc.otherlevel
+  'otherlevel
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.descgrp.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.descgrp.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.descrules.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.did.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dimensions.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dimensions.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dimensions.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dimensions.unit
+  'unit
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dsc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.dsc.othertype
+  'othertype
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<![%eadgrp;[
+<!ENTITY % am.dscgrp.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+                                                                           ]]>
+<!ENTITY % am.ead.relatedencoding
+  'relatedencoding
+    CDATA
+    #IMPLIED'
+                                                                             >
+<![%eadgrp;[
+<!ENTITY % am.eadgrp.relatedencoding
+  'relatedencoding
+    CDATA
+    #IMPLIED'
+                                                                             >
+                                                                           ]]>
+<!ENTITY % am.eadheader.countryencoding
+  'countryencoding
+    NMTOKEN
+    "iso3166-1"'
+                                                                             >
+<!ENTITY % am.eadheader.dateencoding
+  'dateencoding
+    NMTOKEN
+    "iso8601"'
+                                                                             >
+<!ENTITY % am.eadheader.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.eadheader.findaidstatus
+  'findaidstatus
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.eadheader.langencoding
+  'langencoding
+    NMTOKEN
+    "iso639-2b"'
+                                                                             >
+<!ENTITY % am.eadheader.relatedencoding
+  'relatedencoding
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.eadheader.repositoryencoding
+  'repositoryencoding
+    NMTOKEN
+    "iso15511"'
+                                                                             >
+<!ENTITY % am.eadheader.scriptencoding
+  'scriptencoding
+    NMTOKEN
+    "iso15924"'
+                                                                             >
+<!ENTITY % am.eadid.countrycode
+  'countrycode
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.eadid.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.eadid.mainagencycode
+   'mainagencycode
+     NMTOKEN
+     #IMPLIED'
+                                                                             >
+<!ENTITY % am.edition.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.editionstmt.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.extent.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.extent.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.extent.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.extent.unit
+  'unit
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.famname.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.famname.role
+  'role
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.filedesc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.fileplan.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.function.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.genreform.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.genreform.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.geogname.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.geogname.role
+  'role
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.imprint.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.index.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.langmaterial.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.langmaterial.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.language.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.language.langcode
+  'langcode
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.language.scriptcode
+  'scriptcode
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.langusage.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.legalstatus.type
+  'type
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.list.mark
+  'mark
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.materialspec.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.materialspec.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.materialspec.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.name.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.name.role
+  'role
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.note.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.note.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.note.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.notestmt.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.num.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.num.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.occupation.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.odd.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.odd.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.originalsloc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.originalsloc.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.origination.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.origination.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.otherfindaid.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.persname.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.persname.role
+  'role
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physdesc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physdesc.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physdesc.rules
+  'rules
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physdesc.source
+  'source
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physfacet.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physfacet.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physfacet.rules
+  'rules
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physfacet.source
+  'source
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physfacet.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physfacet.unit
+  'unit
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physloc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physloc.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.physloc.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.phystech.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.phystech.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.prefercite.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.processinfo.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.processinfo.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.profiledesc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.publicationstmt.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.publisher.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.relatedmaterial.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.relatedmaterial.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.repository.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.repository.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.revisiondesc.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.runner.role
+  'role
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.scopecontent.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.separatedmaterial.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.separatedmaterial.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.seriesstmt.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.sponsor.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.subarea.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.subject.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.subtitle.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.title.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.title.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.titleproper.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.titleproper.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.titlestmt.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitdate.certainty
+  'certainty
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitdate.datechar
+  'datechar
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitdate.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitdate.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitid.countrycode
+  'countrycode
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitid.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitid.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitid.repositorycode
+  'repositorycode
+    NMTOKEN
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unitid.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unittitle.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unittitle.label
+  'label
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.unittitle.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.userestrict.encodinganalog
+  'encodinganalog
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!ENTITY % am.userestrict.type
+  'type
+    CDATA
+    #IMPLIED'
+                                                                             >
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--
+    END EADLOCAL
+                                                                           -->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
