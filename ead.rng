@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 	EAD 2002 Relax NG Schema
-	Version: 200804 Release
-	Date: 20080421
+	Version: 202011 Release
+	Date: 20201108
 	
-	Previous Version: 200612 Release
+	Previous Version: 200804 Release
 		
 	Publisher: Society of American Archivists and the Library of Congress
 	
@@ -17,7 +17,7 @@
 	
 	Editors (SAA/EADWG/EAD Schema Working Group):
 	
-	Francoise Bourdon (Bibliothèque nationale de France)
+	Francoise Bourdon (BibliothÃ¨que nationale de France)
 	Terry Catapano (Columbia University)
 	Jerry McDonough (University of Illinois)
 	Lee Mandell (New York University)
@@ -63,6 +63,7 @@
 	Revision history: 
 	1.  Revised definitions of XLink elements and attributes in order to make the derived XSD
 	version of the schema conform to xlink.xsd instance used by MODS and METS (20080421)
+	2.  Updated encoding and encoding declaration to utf-8 (20201108)
 	
 -->
 
@@ -3999,3 +4000,4 @@
 
 
 </grammar>
+
