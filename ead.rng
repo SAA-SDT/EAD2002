@@ -64,6 +64,7 @@
 	1.  Revised definitions of XLink elements and attributes in order to make the derived XSD
 	version of the schema conform to xlink.xsd instance used by MODS and METS (20080421)
 	2.  Updated encoding and encoding declaration to utf-8 (20201108)
+	3.  Relaxed the restrictions on @langcode, @mainagencycode, @normal, @scriptcode, and @repositorycode (20201108)
 	
 -->
 

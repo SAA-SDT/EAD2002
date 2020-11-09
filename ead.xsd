@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
 	EAD 2002 W3C Schema
-	Version: 200804 Release
-	Date: 20080421
+	Version: 202011 Release
+	Date: 20201108
 	
-	Previous Version: 200612 Release
+	Previous Version: 200804 Release
 	
 	Publisher: Society of American Archivists and the Library of Congress
 	
@@ -63,6 +63,7 @@
 	Revision history: 
 	1.  Revised definitions of XLink elements and attributes in order to make the XSD schema 
 	conform to xlink.xsd instance used by MODS and METS (20080421)
+	2.  Relaxed the restrictions on @langcode, @mainagencycode, @normal, @scriptcode, and @repositorycode (20201108)
 	
 -->
 <xs:schema elementFormDefault="qualified" targetNamespace="urn:isbn:1-931666-22-9"
