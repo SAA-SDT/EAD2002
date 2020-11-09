@@ -56,9 +56,9 @@
 	@normal on <unitdate> and <date>: constrained to date and date range subset of ISO 8601
 	@repositorycode: constrained to ISO 15511 (ISIL) 
 	@mainagencycode: constrained to ISO 15511 (ISIL)
-	@langcode: constrained to ISO 639-2 alpha-3 code list
-	@scriptcode: constrained to ISO 15924 code list
-	@countrycode: constrained to ISO 3166-1 alpha-2 code list
+	@langcode: expected to have a value from one of the ISO 639-2 code lists, but any code that starts with two alphabetic characters will be valid.
+	@scriptcode: expected to have a value from the ISO 15924 code list, but any four-character code in the format of "Aaaa" will be valid.
+	@countrycode: expected to have a value from the ISO 3166-1 code list, but any two-to-three alphanumeric code will be valid.
 	
 	Revision history: 
 	1.  Revised definitions of XLink elements and attributes in order to make the XSD schema 
