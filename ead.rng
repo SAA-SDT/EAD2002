@@ -1643,6 +1643,12 @@
 	</define>
 	<define name="ead">
 		<element name="ead">
+			<zeroOrMore> 
+				<attribute> 
+					<nsName ns="http://www.w3.org/2001/XMLSchema-instance"/> 
+					<text/> 
+				</attribute> 
+			</zeroOrMore> 
 			<ref name="a.common"/>
 			<optional>
 				<attribute name="relatedencoding"/>
