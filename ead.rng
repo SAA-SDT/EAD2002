@@ -3914,9 +3914,11 @@
 		</attribute>
 	</define>
 	<define name="simpleLink">
-		<attribute a:defaultValue="simple" name="xlink:type">
-			<value>simple</value>
-		</attribute>
+		<optional>
+			<attribute a:defaultValue="simple" name="xlink:type">
+				<value>simple</value>
+			</attribute>
+		</optional>
 		<optional>
 			<ref name="xlink.href"/>
 		</optional>
@@ -3937,9 +3939,11 @@
 		</optional>
 	</define>
 	<define name="extendedLink">
-		<attribute a:defaultValue="extended" name="xlink:type">
-			<value>extended</value>
-		</attribute>
+		<optional>
+			<attribute a:defaultValue="extended" name="xlink:type">
+				<value>extended</value>
+			</attribute>
+		</optional>
 		<optional>
 			<ref name="xlink.role"/>
 		</optional>
@@ -3948,9 +3952,11 @@
 		</optional>
 	</define>
 	<define name="locatorLink">
-		<attribute a:defaultValue="locator" name="xlink:type">
-			<value>locator</value>
-		</attribute>
+		<optional>
+			<attribute a:defaultValue="locator" name="xlink:type">
+				<value>locator</value>
+			</attribute>
+		</optional>
 		<ref name="xlink.href"/>
 		<optional>
 			<ref name="xlink.role"/>
@@ -3963,9 +3969,11 @@
 		</optional>
 	</define>
 	<define name="arcLink">
-		<attribute a:defaultValue="arc" name="xlink:type">
-			<value>arc</value>
-		</attribute>
+		<optional>
+			<attribute a:defaultValue="arc" name="xlink:type">
+				<value>arc</value>
+			</attribute>
+		</optional>
 		<optional>
 			<ref name="xlink.arcrole"/>
 		</optional>
@@ -3987,9 +3995,11 @@
 	</define>
 
 	<define name="resourceLink">
-		<attribute a:defaultValue="resource" name="xlink:type">
-			<value>resource</value>
-		</attribute>
+		<optional>
+			<attribute a:defaultValue="resource" name="xlink:type">
+				<value>resource</value>
+			</attribute>
+		</optional>
 		<optional>
 			<ref name="xlink.role"/>
 		</optional>
