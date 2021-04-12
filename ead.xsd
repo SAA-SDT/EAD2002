@@ -674,7 +674,7 @@
 		<xs:attribute name="label"/>
 		<xs:attribute name="type"/>
 		<xs:attributeGroup ref="am.countrycode"/>
-		<xs:attribute name="repositorycode" type="xs:NMTOKEN/>
+		<xs:attribute name="repositorycode" type="xs:NMTOKEN"/>
 		<xs:attribute name="identifier"/>
 		<xs:attribute name="encodinganalog"/>
 	</xs:complexType>
@@ -868,7 +868,7 @@
 		<xs:attribute name="urn"/>
 		<xs:attribute name="url"/>
 		<xs:attributeGroup ref="am.countrycode"/>
-		<xs:attribute name="mainagencycode" type="xs:NMTOKEN/>
+		<xs:attribute name="mainagencycode" type="xs:NMTOKEN"/>
 		<xs:attribute name="identifier"/>
 		<xs:attribute name="encodinganalog"/>
 	</xs:complexType>
