@@ -54,10 +54,10 @@
 	The following attributes are impacted by the imposition of datatype constraints:
 	
 	@normal on <unitdate> and <date>: constrained to date and date range subset of ISO 8601
-	@repositorycode: was previously constrained to ISO 15511 (ISIL); with the final release of EAD2002, this has been relaxed to NMTOKEN, which also brings parity with the DTD
+	@repositorycode: previously constrained to ISO 15511 (ISIL); with the final release of EAD2002, this has been relaxed to NMTOKEN, which also brings parity with the DTD
 	@mainagencycode: same as @repositorycode; and now, with the final release of EAD2002, this has been relaxed to NMTOKEN, which also brings parity with the DTD
-	@langcode: was previously constrained to ISO 639-2 alpha-3 code list; now relaxed to NMTOKEN, which also brings parity with the DTD
-	@scriptcode: constrained to ISO 15924 code list
+	@langcode: previously constrained to ISO 639-2 alpha-3 code list; now relaxed to NMTOKEN, which also brings parity with the DTD
+	@scriptcode: previously constrained to ISO 15924 code list; now relaxed to NMTOKEN, which also brings parity with the DTD
 	@countrycode: constrained to ISO 3166-1 alpha-2 code list
 	
 	Revision history: 
@@ -1151,117 +1151,7 @@
 		<xs:group maxOccurs="unbounded" minOccurs="0" ref="m.phrase.bare"/>
 		<xs:attributeGroup ref="a.common"/>
 		<xs:attributeGroup ref="am.langcode"/>
-		<xs:attribute name="scriptcode">
-			<xs:simpleType>
-				<xs:restriction base="xs:token">
-					<xs:enumeration value="Arab"/>
-					<xs:enumeration value="Armn"/>
-					<xs:enumeration value="Bali"/>
-					<xs:enumeration value="Batk"/>
-					<xs:enumeration value="Beng"/>
-					<xs:enumeration value="Blis"/>
-					<xs:enumeration value="Bopo"/>
-					<xs:enumeration value="Brah"/>
-					<xs:enumeration value="Brai"/>
-					<xs:enumeration value="Bugi"/>
-					<xs:enumeration value="Buhd"/>
-					<xs:enumeration value="Cans"/>
-					<xs:enumeration value="Cham"/>
-					<xs:enumeration value="Cher"/>
-					<xs:enumeration value="Cirt"/>
-					<xs:enumeration value="Copt"/>
-					<xs:enumeration value="Cprt"/>
-					<xs:enumeration value="Cyrl"/>
-					<xs:enumeration value="Cyrs"/>
-					<xs:enumeration value="Deva"/>
-					<xs:enumeration value="Dsrt"/>
-					<xs:enumeration value="Egyd"/>
-					<xs:enumeration value="Egyh"/>
-					<xs:enumeration value="Egyp"/>
-					<xs:enumeration value="Ethi"/>
-					<xs:enumeration value="Geok"/>
-					<xs:enumeration value="Geor"/>
-					<xs:enumeration value="Glag"/>
-					<xs:enumeration value="Goth"/>
-					<xs:enumeration value="Grek"/>
-					<xs:enumeration value="Gujr"/>
-					<xs:enumeration value="Guru"/>
-					<xs:enumeration value="Hang"/>
-					<xs:enumeration value="Hani"/>
-					<xs:enumeration value="Hano"/>
-					<xs:enumeration value="Hans"/>
-					<xs:enumeration value="Hant"/>
-					<xs:enumeration value="Hebr"/>
-					<xs:enumeration value="Hira"/>
-					<xs:enumeration value="Hmng"/>
-					<xs:enumeration value="Hrkt"/>
-					<xs:enumeration value="Hung"/>
-					<xs:enumeration value="Inds"/>
-					<xs:enumeration value="Ital"/>
-					<xs:enumeration value="Java"/>
-					<xs:enumeration value="Kali"/>
-					<xs:enumeration value="Kana"/>
-					<xs:enumeration value="Khar"/>
-					<xs:enumeration value="Khmr"/>
-					<xs:enumeration value="Knda"/>
-					<xs:enumeration value="Laoo"/>
-					<xs:enumeration value="Latf"/>
-					<xs:enumeration value="Latg"/>
-					<xs:enumeration value="Latn"/>
-					<xs:enumeration value="Lepc"/>
-					<xs:enumeration value="Limb"/>
-					<xs:enumeration value="Lina"/>
-					<xs:enumeration value="Linb"/>
-					<xs:enumeration value="Mand"/>
-					<xs:enumeration value="Maya"/>
-					<xs:enumeration value="Mero"/>
-					<xs:enumeration value="Mlym"/>
-					<xs:enumeration value="Mong"/>
-					<xs:enumeration value="Mymr"/>
-					<xs:enumeration value="Nkoo"/>
-					<xs:enumeration value="Ogam"/>
-					<xs:enumeration value="Orkh"/>
-					<xs:enumeration value="Orya"/>
-					<xs:enumeration value="Osma"/>
-					<xs:enumeration value="Perm"/>
-					<xs:enumeration value="Phag"/>
-					<xs:enumeration value="Phnx"/>
-					<xs:enumeration value="Plrd"/>
-					<xs:enumeration value="Qaaa"/>
-					<xs:enumeration value="Qabx"/>
-					<xs:enumeration value="Roro"/>
-					<xs:enumeration value="Runr"/>
-					<xs:enumeration value="Sara"/>
-					<xs:enumeration value="Shaw"/>
-					<xs:enumeration value="Sinh"/>
-					<xs:enumeration value="Sylo"/>
-					<xs:enumeration value="Syrc"/>
-					<xs:enumeration value="Syre"/>
-					<xs:enumeration value="Syrj"/>
-					<xs:enumeration value="Syrn"/>
-					<xs:enumeration value="Tagb"/>
-					<xs:enumeration value="Tale"/>
-					<xs:enumeration value="Talu"/>
-					<xs:enumeration value="Taml"/>
-					<xs:enumeration value="Telu"/>
-					<xs:enumeration value="Teng"/>
-					<xs:enumeration value="Tfng"/>
-					<xs:enumeration value="Tglg"/>
-					<xs:enumeration value="Thaa"/>
-					<xs:enumeration value="Thai"/>
-					<xs:enumeration value="Tibt"/>
-					<xs:enumeration value="Ugar"/>
-					<xs:enumeration value="Vaii"/>
-					<xs:enumeration value="Visp"/>
-					<xs:enumeration value="Xpeo"/>
-					<xs:enumeration value="Xsux"/>
-					<xs:enumeration value="Yiii"/>
-					<xs:enumeration value="Zxxx"/>
-					<xs:enumeration value="Zyyy"/>
-					<xs:enumeration value="Zzzz"/>
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:attribute>
+		<xs:attribute name="scriptcode" type="xs:NMTOKEN"/>
 		<xs:attribute name="encodinganalog"/>
 	</xs:complexType>
 	<xs:complexType mixed="true" name="materialspec">

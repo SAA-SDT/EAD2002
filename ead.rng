@@ -54,10 +54,10 @@
 	The following attributes are impacted by the imposition of datatype constraints:
 	
 	@normal on <unitdate> and <date>: constrained to date and date range subset of ISO 8601
-	@repositorycode: was previously constrained to ISO 15511 (ISIL); with the final release of EAD2002, this has been relaxed to NMTOKEN, which also brings parity with the DTD
+	@repositorycode: previously constrained to ISO 15511 (ISIL); with the final release of EAD2002, this has been relaxed to NMTOKEN, which also brings parity with the DTD
 	@mainagencycode: same as @repositorycode; and now, with the final release of EAD2002, this has been relaxed to NMTOKEN, which also brings parity with the DTD
-	@langcode: was previously constrained to ISO 639-2 alpha-3 code list; now relaxed to NMTOKEN, which also brings parity with the DTD
-	@scriptcode: constrained to ISO 15924 code list
+	@langcode: previously constrained to ISO 639-2 alpha-3 code list; now relaxed to NMTOKEN, which also brings parity with the DTD
+	@scriptcode: previously constrained to ISO 15924 code list; now relaxed to NMTOKEN, which also brings parity with the DTD
 	@countrycode: constrained to ISO 3166-1 alpha-2 code list
 	
 	Revision history: 
@@ -1669,113 +1669,7 @@
 			<ref name="am.langcode"/>
 			<optional>
 				<attribute name="scriptcode">
-					<choice>
-						<value>Arab</value>
-						<value>Armn</value>
-						<value>Bali</value>
-						<value>Batk</value>
-						<value>Beng</value>
-						<value>Blis</value>
-						<value>Bopo</value>
-						<value>Brah</value>
-						<value>Brai</value>
-						<value>Bugi</value>
-						<value>Buhd</value>
-						<value>Cans</value>
-						<value>Cham</value>
-						<value>Cher</value>
-						<value>Cirt</value>
-						<value>Copt</value>
-						<value>Cprt</value>
-						<value>Cyrl</value>
-						<value>Cyrs</value>
-						<value>Deva</value>
-						<value>Dsrt</value>
-						<value>Egyd</value>
-						<value>Egyh</value>
-						<value>Egyp</value>
-						<value>Ethi</value>
-						<value>Geok</value>
-						<value>Geor</value>
-						<value>Glag</value>
-						<value>Goth</value>
-						<value>Grek</value>
-						<value>Gujr</value>
-						<value>Guru</value>
-						<value>Hang</value>
-						<value>Hani</value>
-						<value>Hano</value>
-						<value>Hans</value>
-						<value>Hant</value>
-						<value>Hebr</value>
-						<value>Hira</value>
-						<value>Hmng</value>
-						<value>Hrkt</value>
-						<value>Hung</value>
-						<value>Inds</value>
-						<value>Ital</value>
-						<value>Java</value>
-						<value>Kali</value>
-						<value>Kana</value>
-						<value>Khar</value>
-						<value>Khmr</value>
-						<value>Knda</value>
-						<value>Laoo</value>
-						<value>Latf</value>
-						<value>Latg</value>
-						<value>Latn</value>
-						<value>Lepc</value>
-						<value>Limb</value>
-						<value>Lina</value>
-						<value>Linb</value>
-						<value>Mand</value>
-						<value>Maya</value>
-						<value>Mero</value>
-						<value>Mlym</value>
-						<value>Mong</value>
-						<value>Mymr</value>
-						<value>Nkoo</value>
-						<value>Ogam</value>
-						<value>Orkh</value>
-						<value>Orya</value>
-						<value>Osma</value>
-						<value>Perm</value>
-						<value>Phag</value>
-						<value>Phnx</value>
-						<value>Plrd</value>
-						<value>Qaaa</value>
-						<value>Qabx</value>
-						<value>Roro</value>
-						<value>Runr</value>
-						<value>Sara</value>
-						<value>Shaw</value>
-						<value>Sinh</value>
-						<value>Sylo</value>
-						<value>Syrc</value>
-						<value>Syre</value>
-						<value>Syrj</value>
-						<value>Syrn</value>
-						<value>Tagb</value>
-						<value>Tale</value>
-						<value>Talu</value>
-						<value>Taml</value>
-						<value>Telu</value>
-						<value>Teng</value>
-						<value>Tfng</value>
-						<value>Tglg</value>
-						<value>Thaa</value>
-						<value>Thai</value>
-						<value>Tibt</value>
-						<value>Ugar</value>
-						<value>Vaii</value>
-						<value>Visp</value>
-						<value>Xpeo</value>
-						<value>Xsux</value>
-						<value>Yiii</value>
-						<value>Zxxx</value>
-						<value>Zyyy</value>
-						<value>Zzzz</value>
-					</choice>
+					<data type="NMTOKEN"/>
 				</attribute>
 			</optional>
 			<optional>
